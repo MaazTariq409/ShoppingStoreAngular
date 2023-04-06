@@ -1,0 +1,24 @@
+<nav class="navbar navbar-default">
+    <a class="navbar-brand" href="#">Recipe Book</a>
+
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav ">
+            <li class="nav-item">
+                <a class="nav-link" href="#" (click)="onRecipeClick('recipe')">Recipes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" (click)="onRecipeClick('shopping list')">Shopping List</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
+                <ul class="dropdown-menu" aria-labelledby="about-us">
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
