@@ -10,6 +10,22 @@ import { RecipeItemComponent } from './recipes/recipes-list/recipe-item/recipe-i
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component'
 import { FormsModule } from '@angular/forms';
+import { AppDropdownDirective } from './Shared/Directives/app-dropdown.directive';
+import { ShoppingListService } from './shopping-list/shopping-list.service';
+import { RouterModule, Routes } from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AppRoutingModule } from './app.routing.module';
+import { RecipestartingpageComponent } from './recipes/recipestartingpage/recipestartingpage.component';
+import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+
+const routes : Routes = [
+  // {path : "" , component: RecipesComponent},
+  {path : "" , redirectTo : "recipe", pathMatch : "full"},
+  {path : "recipe", component: RecipesComponent},
+  {path : "shoppinglist", component: ShoppingListComponent},
+  // wildcard search for path and if not found then errorComponent will be displayed
+  {path: "**" , component: PageNotFoundComponent}
+]
 
 @NgModule({
   declarations: [
@@ -20,13 +36,18 @@ import { FormsModule } from '@angular/forms';
     RecipesDetailComponent,
     RecipeItemComponent,
     ShoppingListComponent,
-    ShoppingEditComponent
+    ShoppingEditComponent,
+    AppDropdownDirective,
+    PageNotFoundComponent,
+    RecipestartingpageComponent,
+    RecipeEditComponent,
   ],
   imports: [
     FormsModule,
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [ShoppingListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

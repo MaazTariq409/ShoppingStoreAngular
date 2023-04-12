@@ -1,8 +1,9 @@
 <header-component (feature)="ChangeTab($event)"></header-component>
 <div class="row container">
     <div class="col-md-10">
-        <app-recipes *ngIf="selectedTab === 'recipe'"></app-recipes>
-        <app-shopping-list *ngIf="selectedTab === 'shopping list'"></app-shopping-list>
+        <!-- <app-recipes *ngIf="selectedTab === 'recipe'"></app-recipes>
+        <app-shopping-list *ngIf="selectedTab === 'shopping list'"></app-shopping-list> -->
+        <router-outlet></router-outlet>
     </div>
     <div class="col-md-2">
     </div>
