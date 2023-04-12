@@ -6,10 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  selectedTab : string = "recipe";
-
-  ChangeTab(featureTab)
-  {
-    this.selectedTab = featureTab;
-  }
+  
 }
