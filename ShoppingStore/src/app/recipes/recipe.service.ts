@@ -4,6 +4,7 @@ import { Subject } from "rxjs";
 
 export class recipeService {
     recipeSelected = new Subject<RecipeModel>();
+    recipeChanged = new Subject<RecipeModel[]>();
 
     recipies: RecipeModel[] = [
         new RecipeModel('Baryani',
@@ -28,4 +29,22 @@ export class recipeService {
         return this.recipies[id];
     }
 
+    AddIngredient(recipe: RecipeModel)
+    {
+        this.recipies.push(recipe);
+        console.log(this.recipies)
+        this.recipeChanged.next(this.recipies.slice())
+    }
+
+    updateIngredient(index: number, recipe : RecipeModel)
+    {
+        this.recipies[index] = recipe
+        this.recipeChanged.next(this.recipies.slice())
+    }
+
+    deleteRecipe(index : number)
+    {
+        this.recipies.splice(index, 1);
+        this.recipeChanged.next(this.recipies.slice())
+    }
 }

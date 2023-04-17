@@ -9,7 +9,7 @@ import { RecipesDetailComponent } from './recipes/recipes-detail/recipes-detail.
 import { RecipeItemComponent } from './recipes/recipes-list/recipe-item/recipe-item.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component'
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppDropdownDirective } from './Shared/Directives/app-dropdown.directive';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { RouterModule, Routes } from '@angular/router';
@@ -17,6 +17,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AppRoutingModule } from './app.routing.module';
 import { RecipestartingpageComponent } from './recipes/recipestartingpage/recipestartingpage.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { recipeService } from './recipes/recipe.service';
 
 const routes : Routes = [
   // {path : "" , component: RecipesComponent},
@@ -44,10 +45,11 @@ const routes : Routes = [
   ],
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [ShoppingListService],
+  providers: [ShoppingListService, recipeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

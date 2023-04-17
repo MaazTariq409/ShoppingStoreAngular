@@ -20,7 +20,7 @@
         <ul class="dropdown-menu">
           <li><a (click)="addIngredientToShopingList()">To Shopping List</a></li>
           <li><a (click)="editRecipe()">Edit Recipe</a></li>
-          <li><a>Delete Recipe</a></li>
+          <li><a (click)="onDeleteRecipe()">Delete Recipe</a></li>
         </ul>
       </div>
     </div>
@@ -35,7 +35,18 @@
       <ul class="list-group">
         <li class="list-group-item"
         *ngFor="let ingredient of SelectedRecipe.ingredients">
-        {{ ingredient.name }}  - {{ ingredient.amount }}
+        <div *ngIf="ingredient.amount < 50; else a">
+          {{ ingredient.name }}  - {{ ingredient.amount }}
+        </div>
+        <ng-template #a>
+          <p>No ingredient found</p>
+        </ng-template>
+        <!-- <ng-template *ngIf="ingredient.amount > 50">
+          {{ ingredient.name }}  - {{ ingredient.amount }}
+        </ng-template> -->
+        
+        
+        <!-- {{ ingredient.name }}  - {{ ingredient.amount }} -->
       </li>
       </ul>
     </div>

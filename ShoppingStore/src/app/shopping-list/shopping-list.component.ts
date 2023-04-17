@@ -22,4 +22,10 @@ export class ShoppingListComponent implements OnInit {
       }
     )
   }
+
+  ingredientSelected(index : number)
+  {
+    
+    this.shoppingService.ingredientSelected.next(index)
+  }
 }

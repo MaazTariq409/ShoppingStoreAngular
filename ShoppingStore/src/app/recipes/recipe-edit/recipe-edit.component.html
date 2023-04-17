@@ -1,1 +1,62 @@
-<p>recipe-edit works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <h2>Create Recipe</h2>
+            <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+                <div id="user-data">
+                    <div class="form-group">
+                        <label for="name">Recipe Name</label>
+                        <input type="text" id="name" class="form-control" formControlName="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Recipe Image</label>
+                        <input type="text" id="image" class="form-control" formControlName="image" #imagePath>
+                    </div>
+                    <div>
+                        <img [src]="imagePath.value" alt="Recipe Image" class="img-responsive">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" class="form-control" formControlName="description" rows="6"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12" formArrayName="ingredients">
+                      <div
+                        class="row"
+                        *ngFor="let ingredientCtrl of recipeControls; let i = index"
+                        [formGroupName]="i"
+                        style="margin-top: 20px;">
+                        <div class="col-xs-8">
+                          <input
+                            type="text"
+                            class="form-control"
+                            formControlName="name">
+                        </div>
+                        <div class="col-xs-2">
+                          <input
+                            type="number"
+                            class="form-control"
+                            formControlName="amount">
+                        </div>
+                        <div class="col-xs-2">
+                          <button
+                            type="button"
+                            class="btn btn-danger"
+                            (click)="onDeleteIngredient(i)">X</button>
+                        </div>
+                      </div>
+                      <hr>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <button type="button" class="btn btn-success" (click)="addingredient()">Add Ingredient</button>
+                            <button type="submit" class="btn btn-success" [disabled]="!reactiveForm.valid">Save</button>
+                            <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+                        </div>
+                    </div>
+                    </div>
+                  </div>
+            </form>
+        </div>
+    </div>
+</div>
