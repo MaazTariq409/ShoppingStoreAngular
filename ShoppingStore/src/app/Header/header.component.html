@@ -14,11 +14,11 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown" appDropdown>
-                <a href="#" class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
+                <a class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
                 <ul class="dropdown-menu" aria-labelledby="about-us">
-                    <li><a href="#">Our Story</a></li>
-                    <li><a href="#">Our Team</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a (click)="storeRecipeData()">Store Data</a></li>
+                    <li><a (click)="fetchRecipeData()">Fetch Data</a></li>
+                    
                 </ul>
             </li>
         </ul>

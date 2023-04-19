@@ -18,6 +18,7 @@ import { AppRoutingModule } from './app.routing.module';
 import { RecipestartingpageComponent } from './recipes/recipestartingpage/recipestartingpage.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { recipeService } from './recipes/recipe.service';
+import { HttpClientModule } from '@angular/common/http'
 
 const routes : Routes = [
   // {path : "" , component: RecipesComponent},
@@ -47,9 +48,11 @@ const routes : Routes = [
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [ShoppingListService, recipeService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
