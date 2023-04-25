@@ -1,19 +1,21 @@
-import { Component , Output, EventEmitter} from "@angular/core";
+import { Component , Output, EventEmitter, OnInit} from "@angular/core";
 import { DataStorageService } from "../Shared/data-storage.service";
+import { authenticateService } from "../authenticate/authenticate.service";
 
 @Component({
     selector: "header-component",
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent {
-    @Output() feature = new EventEmitter<string>();
+export class HeaderComponent implements OnInit {
+isAuthenticated = false
 
-    constructor(private storageService : DataStorageService) {}
+    constructor(private storageService : DataStorageService, private authService : authenticateService) {}
 
-    onRecipeClick(featureTab)
-    {
-        this.feature.emit(featureTab);
+    ngOnInit(){
+        this.authService.user.subscribe(user => {
+            this.isAuthenticated = !!user
+        });
     }
 
     storeRecipeData()
@@ -23,6 +25,11 @@ export class HeaderComponent {
 
     fetchRecipeData()
     {
+        console.log("Response Data");
         this.storageService.fetchRecipe().subscribe();
+    }
+
+    logout(){
+        this.authService.logout();
     }
 }

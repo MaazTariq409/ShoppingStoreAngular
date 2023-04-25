@@ -7,6 +7,7 @@ import { RecipestartingpageComponent } from "./recipes/recipestartingpage/recipe
 import { RecipesDetailComponent } from "./recipes/recipes-detail/recipes-detail.component";
 import { RecipeEditComponent } from "./recipes/recipe-edit/recipe-edit.component";
 import { recipeResolver } from "./recipes/recipe-resolver.service";
+import { AuthenticateComponent } from "./authenticate/authenticate.component";
 
 const routes : Routes = [
     // {path : "" , component: RecipesComponent},
@@ -18,6 +19,7 @@ const routes : Routes = [
         { path : ":id/edit" , component: RecipeEditComponent}
     ]},
     {path : "shoppinglist", component: ShoppingListComponent},
+    {path : 'auth' , component : AuthenticateComponent},
     // wildcard search for path and if not found then errorComponent will be displayed
     {path: "**" , component: PageNotFoundComponent}
   ]

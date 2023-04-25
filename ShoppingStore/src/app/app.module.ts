@@ -18,7 +18,10 @@ import { AppRoutingModule } from './app.routing.module';
 import { RecipestartingpageComponent } from './recipes/recipestartingpage/recipestartingpage.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { recipeService } from './recipes/recipe.service';
-import { HttpClientModule } from '@angular/common/http'
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
+import { SpinnerComponent } from './Shared/spinner/spinner.component'
+import { authInterceptorService } from './authenticate/auth-interceptor.service';
 
 const routes : Routes = [
   // {path : "" , component: RecipesComponent},
@@ -43,6 +46,8 @@ const routes : Routes = [
     PageNotFoundComponent,
     RecipestartingpageComponent,
     RecipeEditComponent,
+    AuthenticateComponent,
+    SpinnerComponent,
   ],
   imports: [
     FormsModule,
@@ -51,7 +56,10 @@ const routes : Routes = [
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [ShoppingListService, recipeService],
+  providers: [ShoppingListService, recipeService, 
+    {provide: HTTP_INTERCEPTORS, 
+      useClass: authInterceptorService, 
+      multi: true}],
   bootstrap: [AppComponent]
 })
 
