@@ -1,8 +1,10 @@
-import { Directive, HostBinding, HostListener } from '@angular/core';
+import { Directive, HostBinding, HostListener, Injectable } from '@angular/core';
+import { inject } from '@angular/core/testing';
 
 @Directive({
   selector: '[appDropdown]'
 })
+
 export class AppDropdownDirective {
   @HostBinding('class.open') menuDropDown = false
 

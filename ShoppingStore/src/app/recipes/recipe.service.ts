@@ -1,26 +1,28 @@
 import { RecipeModel } from "./recipes.model";
 import { ingredientModel } from "../Shared/ingredient.model";
 import { Subject } from "rxjs";
+import { recipeModule } from "./recipe.module";
 
 export class recipeService {
     recipeSelected = new Subject<RecipeModel>();
     recipeChanged = new Subject<RecipeModel[]>();
 
-    recipies: RecipeModel[] = [
-        new RecipeModel('Baryani',
-        'delicous rice recipe',
-        'https://thumbs.dreamstime.com/b/beautiful-rain-forest-ang-ka-nature-trail-doi-inthanon-national-park-thailand-36703721.jpg',
-        [new ingredientModel("Rice", 5),
-        new ingredientModel("vegetables", 2)]),
+    recipies: RecipeModel[] = []
+        // new RecipeModel('Baryani',
+        // 'delicous rice recipe',
+        // 'https://thumbs.dreamstime.com/b/beautiful-rain-forest-ang-ka-nature-trail-doi-inthanon-national-park-thailand-36703721.jpg',
+        // [new ingredientModel("Rice", 5),
+        // new ingredientModel("vegetables", 2)]),
 
-        new RecipeModel('Baryani 2.0', 
-        'New version of delicous rice recipe', 
-        'https://thumbs.dreamstime.com/b/beautiful-rain-forest-ang-ka-nature-trail-doi-inthanon-national-park-thailand-36703721.jpg',
-        [new ingredientModel("Special Rice", 5),
-        new ingredientModel("vegetables", 2)])];
+        // new RecipeModel('Baryani 2.0', 
+        // 'New version of delicous rice recipe', 
+        // 'https://thumbs.dreamstime.com/b/beautiful-rain-forest-ang-ka-nature-trail-doi-inthanon-national-park-thailand-36703721.jpg',
+        // [new ingredientModel("Special Rice", 5),
+        // new ingredientModel("vegetables", 2)])];
 
     getRecipes()
     {
+        console.log(this.recipies);
         return this.recipies.slice();
     }
 
@@ -37,6 +39,8 @@ export class recipeService {
 
     AddIngredient(recipe: RecipeModel)
     {
+        console.log(recipe);
+
         this.recipies.push(recipe);
         console.log(this.recipies)
         this.recipeChanged.next(this.recipies.slice())

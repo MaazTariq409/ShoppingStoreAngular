@@ -58,7 +58,7 @@ export class RecipeEditComponent implements OnInit {
 
     this.reactiveForm = new FormGroup({
       name : new FormControl(name, Validators.required),
-      image : new FormControl(imageUrl, Validators.required),
+      imagePath : new FormControl(imageUrl, Validators.required),
       description : new FormControl(description, Validators.required),
       ingredients : recipeIngredients
     })

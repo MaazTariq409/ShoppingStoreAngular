@@ -10,7 +10,7 @@
                     </div>
                     <div class="form-group">
                         <label for="image">Recipe Image</label>
-                        <input type="text" id="image" class="form-control" formControlName="image" #imagePath>
+                        <input type="text" id="image" class="form-control" formControlName="imagePath" #imagePath>
                     </div>
                     <div>
                         <img [src]="imagePath.value" alt="Recipe Image" class="img-responsive">
@@ -47,6 +47,7 @@
                         </div>
                       </div>
                       <hr>
+                      
                     <div class="row">
                         <div class="col-xs-12">
                             <button type="button" class="btn btn-success" (click)="addingredient()">Add Ingredient</button>
@@ -54,6 +55,7 @@
                             <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
                         </div>
                     </div>
+
                     </div>
                   </div>
             </form>

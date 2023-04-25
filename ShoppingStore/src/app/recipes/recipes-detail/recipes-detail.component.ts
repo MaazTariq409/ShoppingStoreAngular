@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Injectable, Input, OnInit } from '@angular/core';
 import { recipeService } from '../recipe.service';
 import { ShoppingListService } from 'src/app/shopping-list/shopping-list.service';
 import { RecipeModel } from '../recipes.model';
@@ -9,10 +9,12 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   templateUrl: './recipes-detail.component.html',
   styleUrls: ['./recipes-detail.component.css']
 })
+
 export class RecipesDetailComponent implements OnInit {
   SelectedRecipe : RecipeModel
   id : number
   amountGreater : 5
+
 
   constructor(private shoppingListService : ShoppingListService, 
     private route : ActivatedRoute, 
