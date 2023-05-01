@@ -14,6 +14,8 @@ import { SpinnerComponent } from './Shared/spinner/spinner.component'
 import { authInterceptorService } from './authenticate/auth-interceptor.service';
 import { shoppinglistModule } from './shopping-list/shopping-list.module';
 import { recipeModule } from './recipes/recipe.module';
+import { shoppinglistReducer } from './shopping-list/ngrx-store/shopping-list.reducer';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { recipeModule } from './recipes/recipe.module';
     AppRoutingModule,
     HttpClientModule,
     shoppinglistModule,
-    recipeModule
+    recipeModule,
+    StoreModule.forRoot({shoppingList: shoppinglistReducer})
   ],
   
   providers: [ShoppingListService, recipeService,

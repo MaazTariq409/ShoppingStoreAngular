@@ -22,7 +22,6 @@ export class recipeService {
 
     getRecipes()
     {
-        console.log(this.recipies);
         return this.recipies.slice();
     }
 
@@ -42,7 +41,6 @@ export class recipeService {
         console.log(recipe);
 
         this.recipies.push(recipe);
-        console.log(this.recipies)
         this.recipeChanged.next(this.recipies.slice())
     }
 

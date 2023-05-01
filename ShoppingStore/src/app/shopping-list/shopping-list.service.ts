@@ -1,7 +1,14 @@
+import { Store } from "@ngrx/store";
 import { ingredientModel } from "../Shared/ingredient.model";
 import { Subject } from "rxjs";
+import { AddIngredients } from "./ngrx-store/shopping-list.action";
+import { Injectable } from "@angular/core";
+import { AppState } from "./ngrx-store/shopping-list.reducer";
 
+@Injectable()
 export class ShoppingListService {
+
+    constructor(private store : Store<AppState>) {}
 
     ingredientChanged = new Subject<ingredientModel[]>();
     ingredientSelected = new Subject<number>();
@@ -20,10 +27,11 @@ export class ShoppingListService {
         this.ingredientChanged.next(this.ingredients.slice());
     }
 
-    getIngredient(ingredient : ingredientModel[])
+    getIngredientFromRecipe(ingredient : ingredientModel[])
     {
-        this.ingredients.push(...ingredient);
-        this.ingredientChanged.next(this.ingredients.slice());
+        this.store.dispatch(new AddIngredients(ingredient))
+        // this.ingredients.push(...ingredient);
+        // this.ingredientChanged.next(this.ingredients.slice());
     }
 
     getSingleIngredient(index : number)
